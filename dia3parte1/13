@@ -1,0 +1,33 @@
+use std::{collections::VecDeque, fs};
+
+fn main() {
+    let path = "input.in";
+    let mut content: VecDeque<char> = fs::read_to_string(path)
+        .expect("Error al leer el archivo")
+        .chars()
+        .collect();
+    loop {
+        if content.pop_front() == None {
+            break;
+        }
+        if content[0] != 'm' {
+            continue;
+        }
+        if content[1] != 'u' {
+            continue;
+        }
+        if content[2] != 'l' {
+            continue;
+        }
+        if content[3] != '(' {
+            continue;
+        }
+        if content[4].to_digit(10).is_some() {
+            continue;
+        }
+        for char in 0..12 {
+            print!("{}", content[char])
+        }
+        println!();
+    }
+}
